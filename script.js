@@ -8,13 +8,36 @@ function convertToRoman(num) {
       5:['V', 5], 
       6:['I', 1]
     };
+  let result = '';
+  const specialCases = {
+    900: 'CM', 400: 'CD', 90: 'XC', 40: 'XL', 9: 'IX', 4: 'IV'
+  };
 
-  //your code here
+  for (let key in specialCases) {
+    while (num >= key) {
+      result += specialCases[key];
+      num -= key;
+    }
+  }
+
+  for (let i = 0; i <= 6; i++) {
+    let [roman, value] = obj[i];
+    while (num >= value) {
+      result += roman;
+      num -= value;
+    }
+  }
+
+  return result;
+}
+
+  //your code here      
+	
 
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
-// console.log(convertToRoman(36));
+ console.log(convertToRoman(36));
 
 
 
